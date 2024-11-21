@@ -43,6 +43,7 @@ import java.util.Scanner;
  * @author reroes
  */
 public class Ejemplo102 {
+
     /**
      * @param args the command line arguments
      */
@@ -54,25 +55,49 @@ public class Ejemplo102 {
         int contador = 1;
         int operacion;
         int tabla;
-        
+
         System.out.println("Ingrese el número de tabla a generar");
         tabla = entrada.nextInt();
-        
-        String cadena = ""; // cadena acumulador
-        cadena = String.format("%sTabla de multiplicar\n", cadena);
-        
-        while (contador <= limite_tabla){
+        System.out.println("Ingrese el limite de tabla a generar");
+        limite_tabla = entrada.nextInt();
+
+        String cadenaMultiplicacion = ""; // cadena acumulador
+        String cadenaSuma = "";
+        String cadenaresta = "";
+        cadenaMultiplicacion = String.format("%sTabla de multiplicar\n", cadenaMultiplicacion);
+        cadenaSuma = String.format("%sTabla de sumar\n", cadenaSuma);
+        cadenaresta = String.format("%sTabla de Resta\n", cadenaresta);
+
+        while (contador <= limite_tabla) {
+
             operacion = tabla * contador;
-            
-            cadena = String.format("%s%d*%d=%d\n", 
-                    cadena, 
-                    tabla, 
+
+            cadenaMultiplicacion = String.format("%s%d*%d=%d\n",
+                    cadenaMultiplicacion,
+                    tabla,
+                    contador,
+                    operacion);
+
+            operacion = tabla + contador;
+
+            cadenaSuma = String.format("%s%d+%d=%d\n",
+                    cadenaSuma,
+                    tabla,
+                    contador,
+                    operacion);
+
+            operacion = tabla - contador;
+
+            cadenaresta = String.format("%s%d-%d=%d\n",
+                    cadenaresta,
+                    tabla,
                     contador,
                     operacion);
             contador = contador + 1;
         }
-                
+        String cadena = String.format("%s\n%s\n%s\n", cadenaSuma,cadenaresta, cadenaMultiplicacion);
+
         System.out.printf("%s\n", cadena);
-        
+
     }
 }
